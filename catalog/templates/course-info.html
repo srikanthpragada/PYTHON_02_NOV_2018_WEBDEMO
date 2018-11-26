@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Course Information</title>
+</head>
+<body>
+<h1>{{course.name}}</h1>
+<h2>{{course.faculty}}</h2>
+<h3>Topics</h3>
+The following are imporant topics:
+<ul>
+    {% for t in course.topics %}
+      <li>{{t}}</li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>
