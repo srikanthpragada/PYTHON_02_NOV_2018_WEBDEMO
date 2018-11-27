@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+    <style>
+        .banner {
+            background-color:navy;
+            color:white;
+            font-size:24pt;
+            font-family:Arial;
+            font-weight:bold;
+            letter-spacing:5px;
+        }
+
+        .menu {
+            background-color:silver;
+            font-size:12pt;
+            font-family:verdana;
+            font-weight:bold;
+        }
+
+        body {
+         font-family :Verdana;
+         font-size:12pt;
+        }
+    </style>
+</head>
+<body>
+<div class="banner">Products</div>
+<div class="menu">
+    <a href="home">Home</a>
+    &nbsp;
+    <a href="list">List</a>
+    &nbsp;
+    <a href="add">Add</a>
+    &nbsp;
+    <a href="search">Search</a>
+</div>
+{% block body %}
+{% endblock %}
+
+</body>
+</html>

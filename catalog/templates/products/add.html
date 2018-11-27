@@ -1,0 +1,18 @@
+{% extends "products/products_master.html" %}
+{% block body %}
+<h1>Add Product</h1>
+
+<form method="post">
+    Product Name <br/>
+    <input type="text" name="prodname"/>
+    <p></p>
+    Product Price <br/>
+    <input type="number" name="price"/>
+    <p></p>
+    Quantity On Hand <br/>
+    <input type="number" name="qoh"/>
+    <p></p>
+    <input type="submit" value="Add Product" />
+</form>
+
+{% endblock body%}
