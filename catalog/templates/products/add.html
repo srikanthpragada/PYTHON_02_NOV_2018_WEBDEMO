@@ -3,16 +3,18 @@
 <h1>Add Product</h1>
 
 <form method="post">
+    {% csrf_token %}
     Product Name <br/>
-    <input type="text" name="prodname"/>
+    <input type="text" name="prodname" required/>
     <p></p>
     Product Price <br/>
-    <input type="number" name="price"/>
+    <input type="number" name="price" required />
     <p></p>
     Quantity On Hand <br/>
-    <input type="number" name="qoh"/>
+    <input type="number" name="qoh" required />
     <p></p>
-    <input type="submit" value="Add Product" />
+    <input type="submit" value="Add Product"/>
 </form>
+<h4>{{message}}</h4>
 
 {% endblock body%}
