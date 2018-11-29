@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 import sqlite3
+from .forms import ProductForm
 from .models import Course
 from django.http import HttpResponse
 
@@ -40,6 +41,32 @@ def add_product(request):
         con.close()
         return render(request, 'products/add.html',
                       {"message": "Product has been added successfully"})
+
+
+def add_product_with_form(request):
+    if request.method == "GET":
+        form = ProductForm()
+        return render(request, 'products/add_product.html', {'form': form})
+    else:  # POST request
+        form = ProductForm(request.POST)
+        if form.is_valid():
+            # Take data from form
+            name = form.cleaned_data['name']
+            price = form.cleaned_data['price']
+            qoh = form.cleaned_data['qoh']
+            # Insert row
+            con = sqlite3.connect(r"e:\classroom\python\nov2\catalog.db")
+            cur = con.cursor()
+            cur.execute("insert into products(prodname,price,qoh) values(?,?,?)",
+                        (name, price, qoh))
+            con.commit()
+            con.close()
+            # Create blank form and send to template along with message
+            form = ProductForm()
+            return render(request, 'products/add_product.html',
+                          {'form': form, "message": "Product has been added successfully"})
+        else:
+            return render(request, 'products/add_product.html', {'form': form})
 
 
 def delete_product(request, prodid):

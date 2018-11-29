@@ -1,0 +1,47 @@
+{% extends "products/products_master.html" %}
+{% block body %}
+<h2>Add Product With Form</h2>
+<!--
+<form method="post" novalidate>
+    {% csrf_token %}
+    <table>
+        {{form}}
+    </table>
+    <input type="submit" value="Add Product"/>
+</form>
+-->
+<form method="post" novalidate>
+    {% csrf_token %}
+    {{form.name.label}}
+    <br/>
+    {{form.name}}
+    {{form.errors.name.0}}
+    <p></p>
+    {{form.price.label}}
+    <br/>
+    {{form.price}}
+    {{form.errors.price.0}}
+    <p></p>
+    {{form.qoh.label}}
+    <br/>
+    {{form.qoh}}
+    {{form.errors.qoh.0}}
+    <p></p>
+    <input type="submit" value="Add Product"/>
+    {%if form.errors %}
+    <div>
+        <h4>Errors</h4>
+        Correct the following errors and resubmit the form.
+        <ul>
+            {% for k,v in form.errors.items %}
+            <li>{{k}} - {{v.0}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+</form>
+
+
+<h4>{{message}}</h4>
+
+{% endblock body%}
