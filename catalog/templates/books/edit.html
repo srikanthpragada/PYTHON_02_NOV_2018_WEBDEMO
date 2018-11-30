@@ -1,0 +1,20 @@
+{% extends "products/products_master.html" %}
+{% block body %}
+<h1>Edit Product</h1>
+
+<form method="post">
+    {% csrf_token %}
+    Product Name <br/>
+    <input type="text" name="prodname" required  value="{{product.1}}" />
+    <p></p>
+    Product Price <br/>
+    <input type="number" name="price" required  value="{{product.2}}"/>
+    <p></p>
+    Quantity On Hand <br/>
+    <input type="number" name="qoh" required  value="{{product.3}}"/>
+    <p></p>
+    <input type="submit" value="Update Product"/>
+</form>
+<h4>{{message}}</h4>
+
+{% endblock body%}

@@ -1,0 +1,15 @@
+{% extends "products/products_master.html" %}
+{% block body %}
+<h1>Summary</h1>
+<table border="1" cellpadding="10px">
+    <tr>
+        <td>No. of products : </td>
+        <td>{{products_count}}</td>
+    </tr>
+
+    <tr>
+        <td>Average Price    : </td>
+        <td>{{average_price | floatformat:2}}</td>
+    </tr>
+</table>
+{% endblock body%}
