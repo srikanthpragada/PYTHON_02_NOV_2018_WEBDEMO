@@ -1,0 +1,39 @@
+{% extends "books/master.html" %}
+{% block body %}
+<h2>Search Books</h2>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    function search() {
+         // Make Ajax request to get books
+         $.getJSON("/catalog/books/search_books",   // URL
+                   {"title" : $("#title").val()},   // Data
+                   showBooks);                       // Callback function
+    }
+
+    function showBooks(books) {
+         if (books.length == 0)
+         {
+            $("#books").html("Sorry! No books found!");
+            return;
+         }
+
+         result = ""
+         $.each(books,
+                function(idx,book) {
+                    result = result + book.title +
+                         " <a href='/catalog/books/edit/" + book.id + "'>Edit</a><br/>"
+                }
+          );
+
+         $("#books").html(result);
+    }
+
+</script>
+Title : <input type="text" id="title">
+<button onclick="search()">Search</button>
+<p></p>
+<div id="books">
+
+</div>
+
+{% endblock body%}
