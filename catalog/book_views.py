@@ -48,6 +48,7 @@ def delete_book(request, id):
 def edit_book(request, prodid):
     pass
 
+
 def search(request):
     return render(request, 'books/search.html')
 
