@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from . import views, product_views, book_views, class_views
+from . import views, product_views, book_views, class_views, rest_views
 
 urlpatterns = [
     path('index/', views.index),
@@ -19,6 +19,9 @@ urlpatterns = [
     path('books/search_books', book_views.search_books),
     path('about/', class_views.AboutView.as_view()),
     path('listbooks/', class_views.ListBooks.as_view()),
+    path('api/client', rest_views.client),
+    path('api/books/', rest_views.list_books),
+    path('api/books/<int:bookid>/', rest_views.get_book),
 
 
 ]
